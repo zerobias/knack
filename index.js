@@ -7,7 +7,8 @@ const timeouts = {
 const pause = delay => new Promise(rs => setTimeout(rs, delay, delay))
 
 class Queue {
-  constructor(concurrency, interval) {
+  constructor(concurrency, interval, onDone) {
+    this.onDone = onDone
     this.priority = new WeakMap
     this.concurrency = concurrency
     this.interval = interval
@@ -21,8 +22,11 @@ class Queue {
   }
   tryNext() {
     if (this.active >= this.concurrency) return
-    if (this.pending === 0)
+    if (this.pending === 0) {
+      if (this.active === 0)
+        this.onDone()
       return setTimeout(this.tryNext, this.interval)
+    }
     this.active+=1
     this.pendingList.shift()()
   }
@@ -103,8 +107,8 @@ class Queue {
  *
  * @param {any} [{ concurrency = 5, interval = 500 }={}] options
  */
-function Knack({ concurrency = 5, interval = 500 }={}) {
-  const q = new Queue(concurrency, interval)
+function Knack({ concurrency = 5, interval = 500, onDone = () => {} }={}) {
+  const q = new Queue(concurrency, interval, onDone)
   /**
    * @func knack
    * @template T
