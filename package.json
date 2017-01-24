@@ -1,6 +1,6 @@
 {
   "name": "knack",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Transparent async queue manager",
   "main": "index.js",
   "keywords": [
@@ -16,7 +16,8 @@
     "url": "git+https://github.com/zerobias/knack.git"
   },
   "scripts": {
-    "test": "tap index.test.js"
+    "test": "tap index.test.js",
+    "coveralls": "nyc report --reporter=text-lcov tap index.test.js | coveralls"
   },
   "files": [
     "index.js"
@@ -24,6 +25,8 @@
   "author": "Zero Bias",
   "license": "MIT",
   "devDependencies": {
+    "coveralls": "^2.11.15",
+    "nyc": "^10.1.2",
     "tap": "^9.0.3"
   }
 }

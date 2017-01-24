@@ -26,7 +26,8 @@ function asyncFunc(param) {
 // All fields are optional
 const knack = Knack({
   concurrency: 10,
-  interval: 100
+  interval: 100,
+  onDone: () => console.log('all tasks are done')
 })
 
 // Make wrapped function

@@ -10,3 +10,4 @@ coverage
 build
 .idea/
 .nyc_output
+.coveralls.yml
