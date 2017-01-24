@@ -1,0 +1,29 @@
+{
+  "name": "knack",
+  "version": "0.0.2",
+  "description": "Transparent async queue manager",
+  "main": "index.js",
+  "keywords": [
+    "queue",
+    "scheduler",
+    "load balancer",
+    "parallel",
+    "async",
+    "promise"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zerobias/knack.git"
+  },
+  "scripts": {
+    "test": "tap index.test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "author": "Zero Bias",
+  "license": "MIT",
+  "devDependencies": {
+    "tap": "^9.0.3"
+  }
+}
